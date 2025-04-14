@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect , flash, session, url_for
+
 from flask_sqlalchemy import SQLAlchemy
 
-
-
 app =Flask(__name__)
+app.secret_key = "9b90b2d63c112a08bd2ecabff1999b20"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 db = SQLAlchemy(app)
@@ -41,6 +41,41 @@ def applicant():
         return render_template('SuccessfulReg.html')
     return render_template("applicant.html")
 
+
+
+
+
+@app.route('/Login_User/',  methods = ["POST", "GET"])
+
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+        
+        user = Applicant.query.filter_by(email=email).first()
+       
+        
+        if user and user.password == password:
+            session['user_id'] = user.id
+            return redirect(url_for('dashboard'))
+        else:
+            return"Invalid Credentails, please try again"
+                
+    
+    return render_template("Login_User.html")
+
+
+
+@app.route("/dashboard/")
+
+def dashboard():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    return render_template('dashboard.html')
+ 
+    
+    
+    
 
 if __name__ == '__main__':
     with app.app_context():
