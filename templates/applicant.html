@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block head%}
+<title>School Result Management System</title>
+{% endblock %}
+
+
+
+{% block body %}
+
+<h3>Welcome to</h3>
+<h2><b>EduScore University, Abuja </b></h2> 
+<br>
+<p>Fill out the form below to start your application</p>
+<fieldset>
+    <p>Fields marked with * are compulsory</p>
+    <form action="/" method="POST">
+        <div class="inputfeild">
+            <label for="name">*Name</label><br>
+            <input type="text" name="name" id="name" placeholder="Enter you name" required><br><br>
+        </div>
+
+        <div class="inputfeild">
+            <label for="lastname">*Last Name</label><br>
+            <input type="text" name="lastname" id="lastname" placeholder="Enter you Last name" required><br><br>
+        </div>
+
+        <div class="inputfeild">
+            <label for="email">*Email</label><br>
+            <input type="email" name="email" id="email" placeholder="Enter a valid email" required><br><br>
+        </div>
+
+        <div class="inputfeild">
+            <label for="password">*Password</label><br>
+            <input type="password" name="password" id="password" placeholder="Enter a your password" required><br><br>
+        </div>
+
+        <input type ="submit" value="Submit" id="btn_add">
+
+
+    </form>
+
+</fieldset>
+
+{% endblock %}

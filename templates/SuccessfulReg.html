@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<link rel="stylesheet" href={{url_for ('static', filename='style2.css') }}>
+
+<title>Registration Successful</title>
+{% endblock %}
+
+{% block body%}
+<div class="container">
+    <h1>Registration Successful!</h1>
+    <p>Thank you for registering. Your account has been created successfully.</p>
+    <p class="redirect-message">You will be redirected to the login page in <span id="countdown">5</span> seconds...</p>
+    <a href="/login" class="button">Go to Login Page</a>
+</div>
+
+<script>
+    // JavaScript for Countdown Timer and Redirect
+    let countdown = document.getElementById("countdown");
+    let seconds = 10;
+
+    // Update the countdown every second
+    const timer = setInterval(() => {
+        seconds--;
+        countdown.textContent = seconds;
+
+        if (seconds <= 0) {
+            clearInterval(timer);
+            // Redirect to the login page
+            window.location.href = "/login";
+        }
+    }, 1000);
+</script>
+
+{% endblock %}
