@@ -42,3 +42,14 @@ p {
 .button:hover {
     background-color: #1c1d1c;
 }
+
+.btn_add{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}

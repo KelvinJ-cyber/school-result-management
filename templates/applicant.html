@@ -8,13 +8,19 @@
 
 
 {% block body %}
+<div class = "logo-container">
+<img src="{{ url_for('static', filename ='logoai.png') }}" alt="This is my logo" class= "logo">
+</div>
 
-<h3>Welcome to</h3>
-<h2><b>EduScore University, Abuja </b></h2> 
-<br>
-<p>Fill out the form below to start your application</p>
+<div class ="header">   
+  <h3>Welcome to</h3>
+  <h2><b>EduScore University, Abuja </b></h2> 
+  <p>Fill out the form below to start your application</p>
+</div>  
+<div class ="form">
 <fieldset>
-    <p>Fields marked with * are compulsory</p>
+    <p>Fields marked with <span class="asterisk">*</span>are compulsory</p>
+   
     <form action="/" method="POST">
         <div class="inputfeild">
             <label for="name">*Name</label><br>
@@ -36,11 +42,12 @@
             <input type="password" name="password" id="password" placeholder="Enter a your password" required><br><br>
         </div>
 
-        <input type ="submit" value="Submit" id="btn_add">
+        <input type ="submit" value="Submit" class="btn_add">
 
 
     </form>
 
 </fieldset>
+</div>
 
 {% endblock %}

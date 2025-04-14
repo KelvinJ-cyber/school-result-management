@@ -1,3 +1,108 @@
-body{
+body {
+    font-family: Arial, sans-serif;
     background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+form{
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logo-container{
+  position: relative;
+  height: 94px;
+}
+
+.logo{
+    position:absolute;
+    bottom: 250px;
+    left: -300px;
+    
+}
+.inputfeild {
+    margin-bottom: 10px;
+  }
+.inputfeild label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.inputfeild input:focus{
+    outline: none;
+    border-color:#000000 ;
+}
+
+.inputfeild input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+h3{
+    color: #000000;
+    font-size: 2rem;
+    margin-bottom: 0.2em;
+    
+}
+.asterisk {
+    color: red;
+}
+
+.header {
+    position:absolute;
+    text-align: left;
+    place-items: center;
+    margin-bottom: 210px;
+  }
+.header h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.header p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+
+input[type="submit"]{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 50px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+input[type="submit"]:hover{
+    background-color: #1c1d1c;
+}
+
+form{
+    padding: auto;
+    position: relative;
+}
+
+fieldset{
+    border: 1px solid #000000;
+    margin-bottom: 15px;
+    position: relative;
+    top: 250px;
+    padding: auto;
+
 }
