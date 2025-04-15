@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a href="" class="logout">Logout</a>
+    </div>
+
+    <div class="main-content">
+        <div class="card" onclick="location.href='/upload_courses'">
+            <h3>Upload Courses</h3>
+            <a href="/upload_courses">Upload</a>
+        </div>
+        <div class="card" onclick="location.href='/view_students'">
+            <h3>View Students</h3>
+            <a href="/view_students">View</a>
+        </div>
+        <div class="card" onclick="location.href='/manage_results'">
+            <h3>Manage Results</h3>
+            <a href="/manage_results">Manage</a>
+        </div>
+        <div class="card" onclick="location.href='/edit_delete_students'">
+            <h3>Edit/Delete Students</h3>
+            <a href="/edit_delete_students">Edit/Delete</a>
+        </div>
+        <div class="card" onclick="location.href='/course_list'">
+            <h3>Courses List</h3>
+            <a href="/course_list">view</a>
+        </div>
+    </div>
+</body>
+{% endblock%}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href={{url_for ('static', filename='Login_user.css') }}>
+
+<title>Staff Login</title>
+{% endblock %}
+
+
+{% block body %}
+<div class = "logo-container">
+    <img src="{{ url_for('static', filename ='logoai.png') }}" alt="This is my logo" class= "logo">
+</div>
+    
+<div class="container">
+        <h2>EduScore University Result Management System</h2>
+        <p>Staff Login</p>
+        <hr>
+    <form  method="POST", action="/staff/">
+        <div class="formGroup">
+            <label for="Admin Username">Admin Username</label>
+            <input type="text"name="adminusername" class="form-control" placeholder="Admin Username" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="password">Password</label>
+            <input type="password" name="adminpassword" class="form-control" placeholder="Password" required>
+        </div>
+
+        <button type="submit" class="btn">Sign in</button>
+    </form>
+</div>
+
+{% endblock %}

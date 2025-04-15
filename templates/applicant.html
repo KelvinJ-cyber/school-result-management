@@ -21,7 +21,7 @@
 <fieldset>
     <p>Fields marked with <span class="asterisk">*</span>are compulsory</p>
    
-    <form action="/" method="POST">
+    <form action="/applicant/" method="POST">
         <div class="inputfeild">
             <label for="name">*Name</label><br>
             <input type="text" name="name" id="name" placeholder="Enter you name" required><br><br>
@@ -30,6 +30,31 @@
         <div class="inputfeild">
             <label for="lastname">*Last Name</label><br>
             <input type="text" name="lastname" id="lastname" placeholder="Enter you Last name" required><br><br>
+        </div>
+
+        <div class="inputfeild">  
+            <label>Level:</label> <br>
+            <select name="level" required>
+                <option value="">Select Level</option>
+                <option value="100">100 Level</option>
+                <option value="200">200 Level</option>
+                <option value="300">300 Level</option>
+                <option value="400">400 Level</option>
+            </select><br><br>
+        </div>   
+
+        <div class="inputfeild">
+            <label>Semester:</label> <br>
+            <select name="semester" required>
+                <option value="">Select Semester</option>
+                <option value="First">First Semester</option>
+                <option value="Second">Second Semester</option>
+            </select> <br><br>
+        <div>
+        
+        <div class="inputfeild">
+            <label for="department">*Department</label><br>
+            <input type="text" name="department" id="lastname" placeholder="Enter your department" required><br><br>
         </div>
 
         <div class="inputfeild">

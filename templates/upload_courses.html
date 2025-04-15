@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Upload Courses</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='upload_courses.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <h1>Upload New Course</h1>
+    <form method="POST" action="/admin_dashboard/">
+        <label>Course Title:</label>
+        <input type="text" name="title" required>
+
+        <label>Course Code:</label>
+        <input type="text" name="code" required>
+
+        <label>Credit Hours:</label>
+        <input type="number" name="credit_hours" required>
+
+        <label>Level:</label>
+        <select name="level" required>
+            <option value="">Select Level</option>
+            <option value="100">100 Level</option>
+            <option value="200">200 Level</option>
+            <option value="300">300 Level</option>
+            <option value="400">400 Level</option>
+        </select>
+
+        <label>Semester:</label>
+        <select name="semester" required>
+            <option value="">Select Semester</option>
+            <option value="First">First Semester</option>
+            <option value="Second">Second Semester</option>
+        </select>
+
+        <button type="submit">Upload Course</button>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class= "alert alert -{{ category }}" >{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+        {% endwith  %}
+    </form>
+</div>
+
+</body>
+
+
+{% endblock%}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Courses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='course_list.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Uploaded Courses</h1>
+
+        {% if courses %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>Credit Hours</th>
+                    <th>Level</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.credit_hours }}</td>
+                    <td>{{ course.level }}</td>
+                    <td>{{ course.semester }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No courses uploaded yet.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

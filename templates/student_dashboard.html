@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block head%}
+<title>Student Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='student_dashboard.css') }}">
+{% endblock %}
+
+    
+{% block body %}
+<body>
+
+    <div class="container">
+        <h1>Welcome, {{ studentsession.firstname}} {{studentsession.lastname}}</h1>
+        <p><strong>Level:</strong> {{ student.level }}</p>
+        <p><strong>Department:</strong> {{ student.department }}</p>
+
+        <h2>Your Courses</h2>
+        {% if courses %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Course Code</th>
+                    <th>Credit Hours</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.credits_hours }}</td>
+                    <td>{{ course.semester }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No courses available for your level yet.</p>
+        {% endif %}
+    </div>
+
+</body>
+{% endblock %}
