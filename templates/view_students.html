@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for ('static', filename='view_student.css') }}">
+<title>View Students</title>
+{% endblock %}
+
+
+{% block body %}
+<body>
+    <div class="container">
+        <h2>Registered Student</h2>
+
+        
+        {% if students and year_session %}
+        <table>
+            <thead>
+        
+                <tr>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Level</th>
+                    <th>Department</th>
+                    <th>View Courses</th>
+                </tr>
+           
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.firstname}} {{student.lastname}}</td>
+                    <td>{{student.email}}</td>
+                {% endfor %}    
+                
+                {% for year_ in year_session %}
+                    <td>{{ year_.level }}</td>
+                    <td>{{ year_.department }}</td>
+                    <td><a href="{{url_for ('admin_view_student') }}">view info</a></td>
+                </tr>
+                {% endfor %}
+            </thead>     
+            </tbody>
+        </table>
+        {% else %}
+        <p>No student registered yet Calm Down!!!</p>
+        {% endif %}
+        <div class ="back-link">  
+        <a href="/admin_dashboard/">←Back To Dashboard</a>
+        </div>
+    </div>
+{% endblock %}

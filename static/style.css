@@ -17,17 +17,7 @@ form{
     padding-right: 20px;
 }
 
-.logo-container{
-  position: relative;
-  height: 94px;
-}
 
-.logo{
-    position:absolute;
-    bottom: 400px;
-    left: -300px;
-    
-}
 .inputfeild {
     margin-bottom: 10px;
   }

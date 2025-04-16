@@ -180,21 +180,6 @@ def course_list():
     return render_template("course_list.html", courses=courses)
 
 
-@app.route("/deleteStudent")
-
-def delete():
-    deleteStudent = Applicant.query.get()
-    try:
-        db.session.delete(deleteStudent)
-        db.session.commit()
-        return redirect("/admin_dashboard/")
-    except Exception as e :
-        print(f"ERROR: {e}")
-     
-    return render_template("")    
-        
-
-
 @app.route("/dashboard/")
 def dashboard():
     if 'user_id' not in session:
@@ -214,12 +199,16 @@ def dashboard():
  
 @app.route("/admin_view_student/")           
 def admin_view_student():
+      
+    student = Applicant.query.get_or_404()
+
+    courses = Courses.query.filter_by(level=student.level).all()
     
-    return render_template('admin_view.html')
+    return render_template('admin_view.html', student=student, courses=courses)
         
     
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True , port= 1200) 
+    app.run(debug=True , port= 1110) 

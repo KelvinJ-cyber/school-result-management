@@ -6,7 +6,7 @@ body {
 }
 
 .sidebar {
-    width: 220px;
+    width: 250px;
     height: 100vh;
     background: #007bff;
     color: white;
@@ -15,7 +15,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: fixed;
-    margin-right: 1060px;
+    margin-right: 1260px;
 
 }
 
@@ -37,6 +37,7 @@ body {
     gap: 30px;
     padding: 50px;
     width: 100%;
+    margin-bottom: 200px;
     
 }
 
