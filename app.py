@@ -160,18 +160,39 @@ def admin_dashboard():
     
     return render_template ("admin_dashboard.html")
 
+@app.route("/view_students/")
+def view_students():
+    students = Applicant.query.all()
+    year_session = ApplicantSession.query.all()
+    
+    return render_template("view_students.html", students =students, year_session = year_session)
+    
 
 @app.route("/upload_courses/")
 def upload_courses():
     
-    return render_template("upload_courses.html") 
-
+    return render_template("upload_courses.html")
 
 @app.route("/course_list/")
 def course_list():
     courses = Courses.query.all()
     
     return render_template("course_list.html", courses=courses)
+
+
+@app.route("/deleteStudent")
+
+def delete():
+    deleteStudent = Applicant.query.get()
+    try:
+        db.session.delete(deleteStudent)
+        db.session.commit()
+        return redirect("/admin_dashboard/")
+    except Exception as e :
+        print(f"ERROR: {e}")
+     
+    return render_template("")    
+        
 
 
 @app.route("/dashboard/")
@@ -190,11 +211,15 @@ def dashboard():
     
     return render_template('student_dashboard.html', student=studentsession, studentsession= student, courses=courses)
  
-           
+ 
+@app.route("/admin_view_student/")           
+def admin_view_student():
     
+    return render_template('admin_view.html')
+        
     
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True , port= 0000) 
+    app.run(debug=True , port= 1200) 
