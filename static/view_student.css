@@ -48,3 +48,13 @@ table th, table td {
     color: #007bff;
     font-weight: bold;
 }
+
+button{
+    padding: 10px 10px;
+    font-size: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

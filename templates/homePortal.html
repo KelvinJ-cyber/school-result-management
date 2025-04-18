@@ -8,22 +8,23 @@
 
 {% block body %}
 <body>
-
-   
-    <div class="header">
-        <div class = "logo-container">
-            <img src="{{ url_for('static', filename ='logoai.png') }}" alt="This is my logo" class= "logo">
-        </div>
-        <div class="welcome">WELCOME TO</div>
-        <div class="university-name">EduScore University eCampus Portal</div>
+    <div class = "login">
+    
+        <div class="header">
         
-        <div class="nav-links">
-            <a href="/Login_User/" class="nav-link">STUDENT</a>
-            <a href="/staff/" class="nav-link">STAFF</a>
-            <a href="/applicant/" class="nav-link">APPLICANT</a>
-        </div>
 
+            <div class="welcome">WELCOME TO</div>
+            <div class="university-name">EduScore University eCampus Portal</div>
+            
+            <div class="nav-links">
+                <a href="/Login_User/" class="nav-link">STUDENT</a>
+                <a href="/staff/" class="nav-link">STAFF</a>
+                <a href="/applicant/" class="nav-link">APPLICANT</a>
+            </div>
+
+        </div>
     </div>
+
 </body>   
 
 {% endblock %}

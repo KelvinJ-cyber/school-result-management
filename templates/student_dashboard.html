@@ -11,35 +11,17 @@
 <body>
 
     <div class="container">
-        <h1>Welcome, {{ studentsession.firstname}} {{studentsession.lastname}}</h1>
-        <p><strong>Level:</strong> {{ student.level }}</p>
-        <p><strong>Department:</strong> {{ student.department }}</p>
+        <h1>Student Dashboard</h1>
+        <p>Welcome, {{ student.firstname }} {{ student.lastname }}</p>
+        <p>Level: {{ level }}</p>
+        <p>Semester: {{ studentsession.semester }}</p>
 
-        <h2>Your Courses</h2>
-        {% if courses %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Course Title</th>
-                    <th>Course Code</th>
-                    <th>Credit Hours</th>
-                    <th>Semester</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for course in courses %}
-                <tr>
-                    <td>{{ course.title }}</td>
-                    <td>{{ course.code }}</td>
-                    <td>{{ course.credits_hours }}</td>
-                    <td>{{ course.semester }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-            <p>No courses available for your level yet.</p>
-        {% endif %}
+        <h2>Courses</h2>
+        <ul>
+            {% for course in courses %}
+            <li>{{ course.title }} ({{ course.code }})</li>
+            {% endfor %}
+        </ul>
     </div>
 
 </body>

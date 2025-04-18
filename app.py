@@ -206,9 +206,15 @@ def admin_view_student():
     
     return render_template('admin_view.html', student=student, courses=courses)
         
+@app.route("/student_courses/<int:student_id>")
+def student_courses(student_id):
+    student = Applicant.query.get_or_404(student_id)
+    student_session = ApplicantSession.query.filter_by(id=student.id).first()
+    courses = Courses.query.filter_by(level=student_session.level, semester=student_session.semester).all()
+    return render_template("student_courses.html", student=student, student_session=student_session, courses=courses)
     
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True , port= 1110) 
+    app.run(debug=True , port= 1110)

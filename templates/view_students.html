@@ -12,32 +12,29 @@
         <h2>Registered Student</h2>
 
         
-        {% if students and year_session %}
+        {% if students %}
         <table>
             <thead>
-        
                 <tr>
                     <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Email</th>
-                    <th>Level</th>
-                    <th>Department</th>
-                    <th>View Courses</th>
+                    <th>Actions</th>
                 </tr>
-           
+            </thead>
             <tbody>
                 {% for student in students %}
                 <tr>
-                    <td>{{ student.firstname}} {{student.lastname}}</td>
-                    <td>{{student.email}}</td>
-                {% endfor %}    
-                
-                {% for year_ in year_session %}
-                    <td>{{ year_.level }}</td>
-                    <td>{{ year_.department }}</td>
-                    <td><a href="{{url_for ('admin_view_student') }}">view info</a></td>
+                    <td>{{ student.firstname }}</td>
+                    <td>{{ student.lastname }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                        <a href="{{ url_for('student_courses', student_id=student.id) }}">
+                            <button>View Courses</button>
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
-            </thead>     
             </tbody>
         </table>
         {% else %}

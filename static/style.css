@@ -9,12 +9,24 @@ body {
     min-height: 100vh;
   }
 
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 920px;
+    margin-right: 500px;
+  }
+ 
 form{
     background-color: #ffffff;
     border-radius: 8px;
     width: 600px;
     padding-left: 20px;
     padding-right: 20px;
+}
+.form{
+    position: relative;
+    right: 390px;
 }
 
 

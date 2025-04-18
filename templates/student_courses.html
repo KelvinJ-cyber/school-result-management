@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Courses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='student_courses.css') }}">
+</head>
+<body>
+    <h1>Courses for {{ student.firstname }} {{ student.lastname }}</h1>
+    <p>Level: {{ student_session.level }}</p>
+    <p>Semester: {{ student_session.semester }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Title</th>
+                <th>Credit Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.code }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.credits_hours }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('view_students') }}">Back to Students</a>
+</body>
+</html>

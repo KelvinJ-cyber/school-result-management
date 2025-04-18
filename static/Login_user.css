@@ -16,6 +16,7 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 700px;
     box-sizing: border-box;
+    margin-right: 700px;
 }
 
 h2{
