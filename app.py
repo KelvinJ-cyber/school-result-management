@@ -179,6 +179,10 @@ def course_list():
     
     return render_template("course_list.html", courses=courses)
 
+@app.route("/manage_result/")
+def manage_result():
+
+    return redirect(url_for('view_students'))
 
 @app.route("/dashboard/")
 def dashboard():
@@ -212,6 +216,12 @@ def student_courses(student_id):
     student_session = ApplicantSession.query.filter_by(id=student.id).first()
     courses = Courses.query.filter_by(level=student_session.level, semester=student_session.semester).all()
     return render_template("student_courses.html", student=student, student_session=student_session, courses=courses)
+
+@app.route("/view_result/")
+def view_result():
+    
+    return render_template("view_students.html")
+
     
 
 if __name__ == '__main__':

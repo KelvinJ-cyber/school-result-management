@@ -8,23 +8,51 @@ body {
     background: white;
     max-width: 800px;
     margin: auto;
-    padding: 2rem;
+    padding-right:50px;
+    padding-left: 50px;
+    padding-bottom: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-left: 300px;
+    margin-bottom: 500px;
+    transition: 0.3s;
+
+}
+.container:hover {
+    background: #f0f8ff;
+    transform: translateY(-5px);
 }
 
-h1 {
-    color: #007bff;
-    margin-bottom: 1rem;
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #007bff;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    margin-right: 60px;
+    border-radius: 10px;
+    margin-right: 1240px;
+    /* margin-bottom: 120px; */
+    position: fixed;
+    top: 0;
 }
 
-h2 {
-    margin-top: 2rem;
-    color: #333;
+.sidebar h1 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    padding-right: 60px;
 }
-
-p {
-    margin: 0.5rem 0;
+.sidebar p {
+    font-size: 14px;
+    margin-bottom: 400px;
+}
+.sidebar .department {
+    font-size: 14px;
+    margin-bottom: 400px;
 }
 
 table {
@@ -32,14 +60,46 @@ table {
     margin-top: 1rem;
     border-collapse: collapse;
 }
-
+/* 
 table, th, td {
     border: 1px solid #ddd;
-}
+} */
 
 th, td {
     padding: 0.8rem;
     text-align: left;
+    width: 300px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem; 
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 700px;
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    transform: translateX(-20%);
+    
+
+}
+
+button i {
+    font-size: 1rem;
+}
+
+button:hover{
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    color: white;
 }
 
 th {
@@ -47,6 +107,36 @@ th {
     color: white;
 }
 
+
+th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+th:last-child{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 tr:nth-child(even) {
     background: #f9f9f9;
+}
+
+.view-results-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 670px;
+}
+
+.view-results-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }

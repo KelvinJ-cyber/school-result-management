@@ -117,3 +117,12 @@ form input, form select {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #555;
+    font-size: 0.9rem;
+    
+}

@@ -5,32 +5,44 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
 <body>
     <div class="sidebar">
         <h2>Admin Dashboard</h2>
-        <a href="{{url_for ('homePortal') }}" class="logout"> Logout</a>
     </div>
 
     <div class="main-content">
         <div class="card" onclick="location.href='/upload_courses'">
+            <i class="fas fa-upload"></i>
             <h3>Upload Courses</h3>
             <a href="/upload_courses">Upload</a>
         </div>
         <div class="card" onclick="location.href='/view_students/'">
+            <i class="fas fa-user-graduate"></i>
             <h3>View Students</h3>
             <a href="/view_students/">View</a>
         </div>
-        <div class="card" onclick="location.href='/manage_results'">
+        <div class="card"  onclick="location.href='{{ url_for('manage_result') }}' " >
+            <i class="fas fa-file-alt"></i>
             <h3>Manage Results</h3>
-            <a href="/manage_results">Manage</a>
+            <a  href="{{ url_for('manage_result') }}" >Manage</a>
         </div>
         <div class="card" onclick="location.href='/course_list'">
+            <i class="fas fa-list"></i>
             <h3>Courses List</h3>
-            <a href="/course_list">view</a>
+            <a href="/course_list">View</a>
         </div>
     </div>
+    <a href="{{ url_for('homePortal') }}">
+        <button>
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </a>
+    <footer>
+        <p>&copy; 2025 EduScore University. All rights reserved.</p>
+    </footer>
 </body>
 {% endblock%}

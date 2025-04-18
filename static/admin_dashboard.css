@@ -15,13 +15,14 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: fixed;
+    top: 0;
     margin-right: 1260px;
 
 }
 
 .sidebar h2 {
     font-size: 22px;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
 }
 
 .logout {
@@ -37,8 +38,39 @@ body {
     gap: 30px;
     padding: 50px;
     width: 100%;
-    margin-bottom: 200px;
+    margin-bottom: 400px;
     
+}
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem; 
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 700px;
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    transform: translateX(-20%);
+    
+
+}
+
+button i {
+    font-size: 1rem;
+}
+
+button:hover{
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    color: white;
 }
 
 .card {
@@ -49,6 +81,8 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: 0.3s;
+    border: 1px solid #ddd;
+
 }
 
 .card:hover {
@@ -61,9 +95,22 @@ body {
     font-size: 18px;
 }
 
-
 .card a {
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
+}
+
+.card i {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #555;
+    font-size: 0.9rem;
+
 }
