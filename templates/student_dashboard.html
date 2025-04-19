@@ -24,19 +24,29 @@
         <table>
             <thead>
                 <tr>
-                    <th>Course Title</th>
                     <th>Course Code</th>
+                    <th>Course Title</th>
                     <th>Credit Hours</th>
-                    <th>Semester</th>
+                    <th>Grade</th>
                 </tr>
             </thead>
             <tbody>
                 {% for course in courses %}
                 <tr>
-                    <td>{{ course.title }}</td>
                     <td>{{ course.code }}</td>
+                    <td>{{ course.title }}</td>
                     <td>{{ course.credits_hours }}</td>
-                    <td>{{ course.semester }}</td>
+                    {% if grades %}
+                    <td>
+                        {% for grades in grades %}
+                            {% if grades.course_id == course.id %}
+                                {{ grades.grade }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    {% else %}
+                    <td>Your Grades are not out yet! </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
@@ -48,7 +58,10 @@
         <div class="button">
             <a href="{{ url_for('view_result') }}" class="view-results-button">View Result</a>
         </div>
+        <p>GPA: {{ gpa }} </p>
+        <p class="note">Note: Your grades will be displayed once they are released by the school.</p>   
     </div>
+
 
     <a href="{{ url_for('homePortal') }}">
         <button>

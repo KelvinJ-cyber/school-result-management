@@ -20,6 +20,7 @@
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Actions</th>
+                    <th>Results</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,11 @@
                     <td>
                         <a href="{{ url_for('student_courses', student_id=student.id) }}">
                             <button>View Courses</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('add_result', student_id=student.id) }}">
+                            <button>Manage Results</button>
                         </a>
                     </td>
                 </tr>

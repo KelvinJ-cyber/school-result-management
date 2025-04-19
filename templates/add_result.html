@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_result.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Result for {{ student.firstname }} {{ student.lastname }}</h1>
+        <form method="POST">
+            <label for="course_id">Course:</label>
+            <select name="course_id" required>
+                {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.title }} ({{ course.code }})</option>
+                {% endfor %}
+            </select>
+
+            <label for="grade">Grade:</label>
+            <input type="text" name="grade" required>
+
+            <button type="submit">Add Result</button>
+        </form>
+    </div>
+</body>
+</html>

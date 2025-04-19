@@ -59,10 +59,30 @@ class Courses(db.Model):
     
     def __repr__(self):
         return f"<Courses {self.firstname}, {self.lastname}>"
+
+
+class Result(db.Model):
+    __tablename__ = "resultDetails"
+    id = db.Column(db.Integer, primary_key =True)  
+    student_id = db.Column(db.Integer, db.ForeignKey('applicantDetails.id'))
+    course_code = db.Column(db.String(100), nullable= False)
+    grade = db.Column(db.String(20))
     
+    def __repr__(self):
+        return f"<Courses {self.firstname}, {self.lastname}>"
     
+class Results(db.Model):
+    __tablename__ = "results"
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('applicantDetails.id'), nullable=False)
+    course_id = db.Column(db.Integer, db.ForeignKey('coursesDetails.id'), nullable=False)
+    grade = db.Column(db.String(2), nullable=False)
+
+    def __repr__(self):
+        return f"<Result Student ID: {self.student_id}, Course ID: {self.course_id}, Grade: {self.grade}>"
         
 
+# route for new applicants
 @app.route('/applicant/', methods= ["GET","POST"])
 def applicant():
     if request.method == "POST":
@@ -94,9 +114,8 @@ def applicant():
 
 
 
-
+# User login Authentication
 @app.route('/Login_User/',  methods = ["POST", "GET"])
-
 def login():
     if request.method == "POST":
         email = request.form["email"]
@@ -113,7 +132,8 @@ def login():
                 
     
     return render_template("Login_User.html")
-
+ 
+# Admin login Authentication
 @app.route("/staff/" , methods= ["POST", "GET"])
 def staff():
     if request.method == "POST":
@@ -136,6 +156,7 @@ def staff():
             
     return render_template("staff.html")
 
+# Uploading Courses through Admin Dashboard 
 @app.route("/admin_dashboard/" ,methods=["POST", "GET"])
 def admin_dashboard():
     if request.method == "POST":
@@ -160,6 +181,7 @@ def admin_dashboard():
     
     return render_template ("admin_dashboard.html")
 
+# to view all registered students
 @app.route("/view_students/")
 def view_students():
     students = Applicant.query.all()
@@ -167,23 +189,26 @@ def view_students():
     
     return render_template("view_students.html", students =students, year_session = year_session)
     
-
+# Upload Courses Render html template
 @app.route("/upload_courses/")
 def upload_courses():
     
     return render_template("upload_courses.html")
 
+# View all upladed courses
 @app.route("/course_list/")
 def course_list():
     courses = Courses.query.all()
     
     return render_template("course_list.html", courses=courses)
 
+
 @app.route("/manage_result/")
 def manage_result():
 
     return redirect(url_for('view_students'))
 
+# student's dashboard
 @app.route("/dashboard/")
 def dashboard():
     if 'user_id' not in session:
@@ -196,10 +221,12 @@ def dashboard():
     student_semester = studentsession.semester
     
     courses = Courses.query.filter_by(level=student_level, semester= student_semester).all()
+    gpa = calulate_gpa(student.id)
+    grades = Results.query.filter_by(student_id=student.id)
+  
+
+    return render_template('student_dashboard.html', student=studentsession, studentsession= student, courses=courses, gpa=gpa, grades=grades)
    
-    
-    return render_template('student_dashboard.html', student=studentsession, studentsession= student, courses=courses)
- 
  
 @app.route("/admin_view_student/")           
 def admin_view_student():
@@ -219,12 +246,67 @@ def student_courses(student_id):
 
 @app.route("/view_result/")
 def view_result():
-    
-    return render_template("view_students.html")
+    return render_template("view_result.html")
+
+# adding of results and grade to the db
+@app.route("/add_result/<int:student_id>", methods=["GET", "POST"])
+def add_result(student_id):
+    student = Applicant.query.get_or_404(student_id)
+    student_session = ApplicantSession.query.filter_by(id=student.id).first()
+
+  
+    courses = Courses.query.filter_by(level=student_session.level, semester=student_session.semester).all()
+
+    if request.method == "POST":
+        course_id = request.form['course_id']
+        grade = request.form['grade']
+
+        new_result = Results(student_id=student.id, course_id=course_id, grade=grade)
+        try:
+            db.session.add(new_result)
+            db.session.commit()
+            flash("Result added successfully!", "success")
+        except Exception as e:
+            return f"Error: {e}"
+
+    return render_template("add_result.html", student=student, courses=courses)
+
+#function to calculate GPA
+def calulate_gpa(student_id):
+    results = Results.query.filter_by(student_id=student_id).all()
+    if not results:
+        return 0.0
+
+    total_points = 0.0
+    total_credits = 0.0
+
+    grade_points = {
+        'A': 5.0,
+        'B': 4.0,
+        'C': 3.0,
+        'D': 2.0,
+        'F': 0.0
+    }
+
+    for result in results:
+        course = Courses.query.get(result.course_id)
+        if course:
+            credit_hours = int(course.credits_hours)
+            grade = result.grade.upper()
+            points = grade_points.get(grade, 0) * credit_hours
+            total_points += points
+            total_credits += credit_hours
+    if total_points == 0:
+        return 0.0 
+
+    gpa = total_points / total_credits
+    return round(gpa, 2)           
+
+
 
     
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True , port= 1110)
+    app.run(debug=True , port= 5000)
