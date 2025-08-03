@@ -62,7 +62,7 @@ class Courses(db.Model):
 class Result(db.Model):
     __tablename__ = "resultDetails"
     id = db.Column(db.Integer, primary_key =True)  
-    student_id = db.Column(db.Integer, db.ForeignKey('applicantDetails.id'))
+    student_id = db.Column(db.Integer, nullable=False)
     course_code = db.Column(db.String(100), nullable= False)
     grade = db.Column(db.String(20))
     
@@ -72,7 +72,7 @@ class Result(db.Model):
 class Results(db.Model):
     __tablename__ = "results"
     id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, db.ForeignKey('applicantDetails.id'), nullable=False)
+    student_id = db.Column(db.Integer, nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey('coursesDetails.id'), nullable=False)
     grade = db.Column(db.String(2), nullable=False)
 
@@ -223,6 +223,7 @@ def dashboard():
 def admin_view_student():
       
     student = Applicant.query.get_or_404()
+
 
     courses = Courses.query.filter_by(level=student.level).all()
     
