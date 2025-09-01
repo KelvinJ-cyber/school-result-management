@@ -53,6 +53,15 @@ A web-based application for managing student results, built with Flask, HTML, an
 - `static/` - CSS and static files
 - `instance/database.db` - SQLite database
 
+## Admin Login for Testing
+
+External visitors can log in as an admin for testing purposes using the credentials below:
+
+- **Username:** `Admin`
+- **Password:** `admin123`
+
+Go to the staff (admin) login page and enter these credentials to access the admin dashboard.
+
 ## Usage
 
 - Register as a student or staff
